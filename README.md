@@ -1,15 +1,8 @@
-# CovidTweetSentimentAnalysis
-Question: Does political affiliation affect how people feel about COVID-19?
+In the US, the two biggest news topics of 2020 were the presidential election and the covid-19 pandemic. The virus itself became a highly politicized topic as the pandemic wore on. The question that I came up with was: does political leaning determine the sentment of social media posts related to Covid? Strongly negative terms like "liar" and "sham" have taken on a political aspect, so it seemed natural to see if there was meaningful difference between "liberal" and "conservative" tweets about the virus. 
 
-This question seemed reasonable given the intensely politicized media environment surrounding issues like masks and vaccination. 
+For this project I looked at a large set of tweets related to Covid-19 (available at the Kaggle link below). I then filtered by user bio (an optional field for Twitter users), using bio keywords to classify users as either "conservative" or "liberal." This considerably thinned the number of tweets I had to work with, but I still had several thousand left over. Then I used NLP to classify the sentiment of each tweet in the filtered data set as either "positive" or "negative."
 
-I tried to answer this statistically using tools from NLP and hypothesis testing. My main data source was a large set of COVID-related tweets gathered from Twitter's API. 
+Using some pretty basic statistical hypothesis testing, I found that there was no significant difference between the sentiment of "liberal" users and "conservative" users. Anecdotally it did occur that conservative tweets about Covid-19 were slightly more negative. I think that more work could be done to expand the bio-filtering (the project discarded a very high proportion of the tweets). 
 
-First I tried to decide the political affiliation of each tweet's author by looking at their Twitter bio field. Bio keywords like "conservative" "traditionalist" "GOP" etc. led me to label a tweet's author as "conservative" whereas bio keywords like "liberal" "progressive" etc. led me to label a tweet's author as "liberal."
+In order to use the Jupyter Notebook, you'll need the .csv file from this link (too large for Github!). https://www.kaggle.com/gpreda/covid19-tweets
 
-(Most Twitter users don't have political keywords in their bio, but anecdotally it seemed like a large enough chunk of the most political accounts had such keywords that I wouldn't be discarding too many "political" tweets.)
-
-With several thousand "liberal" and "conservative" COVID-related tweets in hand, I trained a naive Bayes classifier using the scikit learn package. This assigned a sentiment score to each tweet. Conservative tweets from my sample had a lower mean sentiment score, indicating more negative terms. I then used basic statistical hypothesis testing to determine if the difference in the mean sentiment scores reflected a true difference in the two general user populations. This hypothesis test rejected the alternative hypothesis. So we couldn't ascribe a statistically significant role to the political beliefs of a user as an effect upon the sentiment of their COVID-related tweets. 
-
-
-There's still a lot that could be done to improve this project. I could get a larger set of tweets, create a larger set of bio keywords for affiliating political stance with a user (or use some kind of clustering algorithm to do this in a natural unsupervised fashion), etc. 
